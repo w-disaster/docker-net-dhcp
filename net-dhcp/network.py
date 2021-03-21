@@ -95,6 +95,18 @@ def endpoint_container_hostname(n, e):
             return client.containers.get(cid).attrs['Config']['Hostname']
     return None
 
+
+@app.route('/IpamDriver.GetDefaultAddressSpaces', methods=['POST'])
+def ipam_get_def_addr_spaces():
+    return jsonify({
+	    "LocalDefaultAddressSpace": "LocalDefault"
+	    "GlobalDefaultAddressSpace": "GlobalDefault"
+    })
+
+@app.route('/IpamDriver.RequestPool', methods=['POST'])
+def ipam_request_pool():
+    return jsonify({})
+
 @app.route('/NetworkDriver.GetCapabilities', methods=['POST'])
 def net_get_capabilities():
     return jsonify({
